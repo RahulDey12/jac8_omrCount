@@ -17,20 +17,27 @@ class PageController extends Controller
     }
 
     public function submitData(Request $request) {
-        $school = School::find($request->input('school'));
-        $district = DB::table('district')->find($request->input('district'));
-
+    
         $this->validate($request, [
             'district'      => 'required',
-            'school'        => 'required|unique:attendance,school_id',
-            'box'           => 'required',
-            'total-student' => 'required'
+            'school'        => 'required|digits:6|exists:schools,jac_code',
+            'box'           => 'required|numeric',
+            'total-student' => 'required|numeric|max:500'
         ]);
+
+        // Gatering Info
+        $school = School::where('jac_code', $request->input('school'))->first();
+        $district = DB::table('district')->find($request->input('district'));
+
+        //Validating School Before Update
+        if(Attendance::where('school_id', $school->id)->count() > 0) {
+            return redirect()->back()->withErrors(['School Folder Already Exist']);
+        }
 
         Storage::disk('disk-to-save')->makeDirectory('/'. env('DIRECTORY_TO_SAVE') .'/omrScan/'.$district->name.'/'.$request->input('box').'/'.$school->jac_code);
 
         $attendance = new Attendance;
-        $attendance->school_id = $request->input('school');
+        $attendance->school_id = $school->id;
         $attendance->box_no = $request->input('box');
         $attendance->student_count = $request->input('total-student');
         $attendance->save();

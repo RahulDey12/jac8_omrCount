@@ -47,17 +47,17 @@
 
                         <div class="form-group">
                             <label for="box">Box No</label>
-                            <input type="number" name="box" id="box" class="form-control school" required value="{{ session()->get('box') }}"></select>
+                            <input type="number" name="box" id="box" class="form-control" required value="{{ session()->get('box') }}"></select>
                         </div>
 
                         <div class="form-group">
                             <label for="school">School</label>
-                            <select name="school" id="school" class="form-control school" required></select>
+                            <input type="number" maxlength="6" name="school" id="school" class="form-control school" required>
                         </div>
 
                         <div class="form-group">
                             <label for="total-student">Total Student</label>
-                            <input name="total-student" type="number" class="form-control" required>
+                            <input name="total-student" max="500" type="number" class="form-control" required>
                         </div>
 
                         <div class="form-group">

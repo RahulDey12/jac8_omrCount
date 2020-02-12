@@ -22,32 +22,32 @@ try {
         width: "100%"
     });
 
-    changeSchool();
-    $('.districts').change(function () {
-        changeSchool();
-    })
+    // changeSchool();
+    // $('.districts').change(function () {
+    //     changeSchool();
+    // })
 
 } catch (e) {
     console.log(e)
 }
 
-function changeSchool() {
-    let baseURL = $('#baseUrl').data('url');
-    let distId = $('.districts option:selected').attr('value');
-    $('.school').children('option').remove();
+// function changeSchool() {
+//     let baseURL = $('#baseUrl').data('url');
+//     let distId = $('.districts option:selected').attr('value');
+//     $('.school').children('option').remove();
 
-    $('#school').select2({
-        placeholder: 'Select Schools',
-        width: '100%',
-        delay: 500,
-        ajax: {
-            url: `${baseURL}/api/schools/${distId}`,
-            dataType: 'json',
-            processResults: function (data) {
-                return{
-                    results: data.data
-                };
-            }
-        }
-    });
-}
+//     $('#school').select2({
+//         placeholder: 'Select Schools',
+//         width: '100%',
+//         delay: 500,
+//         ajax: {
+//             url: `${baseURL}/api/schools/${distId}`,
+//             dataType: 'json',
+//             processResults: function (data) {
+//                 return{
+//                     results: data.data
+//                 };
+//             }
+//         }
+//     });
+// }
