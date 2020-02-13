@@ -38,6 +38,7 @@ class PageController extends Controller
 
         $attendance = new Attendance;
         $attendance->school_id = $school->id;
+        $attendance->jac_code = $request->input('school');
         $attendance->box_no = $request->input('box');
         $attendance->student_count = $request->input('total-student');
         $attendance->save();
