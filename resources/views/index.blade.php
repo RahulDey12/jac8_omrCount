@@ -52,7 +52,7 @@
 
                         <div class="form-group">
                             <label for="school">School</label>
-                            <input type="number" maxlength="6" name="school" id="school" class="form-control school" required>
+                            <input type="number" maxlength="6" name="school" id="school" class="form-control school" @if(session()->get('box') != null)autofocus @endif required>
                         </div>
 
                         <div class="form-group">
