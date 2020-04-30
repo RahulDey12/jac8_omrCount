@@ -21,7 +21,7 @@
     },
     "dependencies": {
         "bootstrap": "^4.4.1",
-        "jquery": "^3.4.1",
+        "jquery": "^3.5.0",
         "select2": "^4.0.13",
         "sweetalert2": "^9.7.2"
     }
